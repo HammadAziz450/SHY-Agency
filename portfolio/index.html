@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Creative Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .particles span {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #60a5fa;
+            border-radius: 50%;
+            opacity: .5;
+            animation: float 10s linear infinite;
+        }
+
+        .particles span:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .particles span:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .particles span:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .particles span:nth-child(4) {
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .particles span:nth-child(5) {
+            left: 90%;
+            animation-delay: 8s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: .7;
+            }
+
+            to {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #60a5fa;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --card: #ffffff;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        nav ul a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(15, 23, 42, .8), rgba(15, 23, 42, .8)),
+                url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            animation: zoomBg 15s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards;
+        }
+
+        .hero-content p {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards;
+            animation-delay: .3s;
+        }
+
+        .hero-content .btn {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s ease forwards;
+        }
+
+        .hero-content .btn:nth-of-type(1) {
+            animation-delay: .6s;
+        }
+
+        .hero-content .btn:nth-of-type(2) {
+            animation-delay: .8s;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomBg {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.15);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 10px;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            background: #1e40af;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+        }
+
+        .about-text h2 {
+            color: var(--primary);
+        }
+
+        /* SERVICES */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            transition: .4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .service-card ul {
+            padding-left: 20px;
+            line-height: 2;
+        }
+
+        /* PORTFOLIO */
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(37, 99, 235, .95),
+                    rgba(96, 165, 250, .85));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: .5s;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* PRICING */
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+            transition: .4s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 45px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            line-height: 2.2;
+            margin-bottom: 25px;
+        }
+
+        /* WHY US */
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .why-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .08);
+            text-align: center;
+        }
+
+        .why-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            background: var(--primary);
+            border: none;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        #typing {
+            color: #60a5fa;
+            font-weight: 700;
+            border-right: 3px solid #60a5fa;
+            padding-right: 5px;
+        }
+
+        @media(max-width:768px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+        }
+
+        .logo img {
+            height: 43px;
+        }
+
+        #pageLoader {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .loader-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e5e7eb;
+            border-top: 5px solid #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: auto;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-box p {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .about-img img {
+            height: 99%;
+        }
+
+        .overlay-about {
+            position: relative;
+            bottom: 101%;
+            background: linear-gradient(355deg, #2563eb, #60a5fa00, #60a5fa00)
+        }
+
+        .about-img {
+            background: linear-gradient(135deg, #2563eb, #60a5fa);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .client-heading {
+            color: white;
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .client-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .logo-circle {
+            width: 120px;
+            text-align: center;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .logo-circle:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .logo-circle:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .logo-circle:nth-child(4) {
+            animation-delay: 3s;
+        }
+
+        .logo-circle img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+        }
+
+        .logo-circle span {
+            display: block;
+            color: white;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pageLoader">
+        <div class="loader-box">
+            <div class="spinner"></div>
+            <p>Sending Message...</p>
+        </div>
+    </div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="agency_logo-removebg-preview (1).png" alt=""></div>
+
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="particles">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container hero-content">
+
+            <h1>OUR <span>PORTFOLIO</span></h1>
+
+            <h2>
+                We Help Businesses Grow Online
+            </h2>
+
+            <p class="hero-subtitle">
+                We Provide
+                <b> <span id="typing"></span></b>
+            </p>
+
+            <a href="#portfolio" class="btn">View Portfolio</a>
+
+            <a href="#contact" class="btn btn-outline">Get Quote</a>
+
+        </div>
+
+    </section>
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-img">
+
+                    <h3 class="client-heading">Trusted By Our Clients</h3>
+
+                    <div class="client-logos">
+
+                        <div class="logo-circle">
+                            <img src="assets/taj.png" alt="TAJ">
+                            <span>TAJ Gasoline</span>
+                        </div>
+
+                        <div class="logo-circle">
+                            <img src="assets/star.jpg" alt="Client">
+                            <span>Star Cleaner</span>
+                        </div>
+
+                        <div class="logo-circle">
+                            <img src="assets/genz.png" alt="Client">
+                            <span>Genz Wear</span>
+                        </div>
+
+                        <div class="logo-circle">
+                            <img src="assets/daraz-icon-filled-256.png" alt="Client">
+                            <span>Daraz</span>
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+
+                <div class="about-text">
+
+                    <h2>About Us</h2>
+
+                    <p>
+                        We help brands establish a powerful online presence through modern websites,
+                        engaging videos and premium graphic designs.
+                        Our goal is to deliver creative digital solutions that generate real results.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="services">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <h3>🌐 Website Development</h3>
+                    <ul>
+                        <li>Business Websites</li>
+                        <li>E-Commerce Stores</li>
+                        <li>Landing Pages</li>
+                        <li>Firebase Integration</li>
+                        <li>Admin Dashboards</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>🎬 Video Editing</h3>
+                    <ul>
+                        <li>Reels & Shorts</li>
+                        <li>YouTube Videos</li>
+                        <li>Advertisements</li>
+                        <li>Motion Graphics</li>
+                        <li>Corporate Videos</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>🎨 Graphic Design</h3>
+                    <ul>
+                        <li>Logo Design</li>
+                        <li>Social Media Posts</li>
+                        <li>Brand Identity</li>
+                        <li>Flyers & Brochures</li>
+                        <li>Marketing Materials</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="portfolio">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Portfolio</h2>
+            </div>
+
+            <div class="portfolio-grid">
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f">
+                    <div class="overlay">Website Project</div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931">
+                    <div class="overlay">Business Website</div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="./video edit.jpg">
+                    <div class="overlay">Video Editing</div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d">
+                    <div class="overlay">Graphic Design</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="pricing">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Pricing Plans</h2>
+            </div>
+
+            <div class="pricing-grid">
+
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <div class="price">15K</div>
+                    <ul>
+                        <li>3 Pages Website</li>
+                        <li>Responsive Design</li>
+                        <li>Contact Form</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="closeModal()">Choose Plan</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Business</h3>
+                    <div class="price">35K</div>
+                    <ul>
+                        <li>10 Pages Website</li>
+                        <li>Admin Dashboard</li>
+                        <li>Firebase Integration</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="closeModal()">Choose Plan</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Premium</h3>
+                    <div class="price">75K+</div>
+                    <ul>
+                        <li>Custom Web App</li>
+                        <li>Database Integration</li>
+                        <li>Advanced Features</li>
+                    </ul>
+                    <a href="#contact" class="btn" onclick="closeModal()">Choose Plan</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+            </div>
+
+            <div class="why-grid">
+
+                <div class="why-card">
+                    <h3>Fast Delivery</h3>
+                    <p>Projects completed on time.</p>
+                </div>
+
+                <div class="why-card">
+                    <h3>Modern Design</h3>
+                    <p>Clean and professional UI.</p>
+                </div>
+
+                <div class="why-card">
+                    <h3>Affordable Pricing</h3>
+                    <p>High quality at competitive rates.</p>
+                </div>
+
+                <div class="why-card">
+                    <h3>Support</h3>
+                    <p>Ongoing maintenance and help.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contact" class="contact">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div>
+                    <h2>Let's Work Together</h2>
+                    <p>Email: shyagency@gmail.com</p>
+                    <p>Phone: +92 XXX XXXXXXX</p>
+                    <p>Karachi, Pakistan</p>
+                </div>
+
+                <form class="contact-form">
+
+                    <input id="name" type="text" placeholder="Your Name" required>
+
+                    <input id="email" type="email" placeholder="Email Address" required>
+
+                    <input id="phone" type="text" placeholder="Phone Number">
+
+                    <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+
+                    <button type="button" id="submitBtn" onclick="sendForm()">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="footer">
+        © 2026 SHY Agency. All Rights Reserved.
+    </div>
+
+</body>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    /* FIREBASE CONFIG */
+    const firebaseConfig = {
+        apiKey: "AIzaSyBnS4PimU6MBqZIR1MLM1UGDCN-jLTjdwg",
+        authDomain: "shy-agency-portfolio.firebaseapp.com",
+        projectId: "shy-agency-portfolio",
+        storageBucket: "shy-agency-portfolio.firebasestorage.app",
+        messagingSenderId: "950371678598",
+        appId: "1:950371678598:web:5db957eaeedef1d25c1407",
+        measurementId: "G-FFWM5SDXV8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    /* CONTACT FORM */
+    window.sendForm = async () => {
+
+        const btn = document.getElementById("submitBtn");
+
+        if (btn) {
+            btn.disabled = true;
+            btn.innerText = "Sending...";
+        }
+
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const phoneInput = document.getElementById("phone");
+        const messageInput = document.getElementById("message");
+
+        if (!nameInput || !emailInput || !phoneInput || !messageInput) {
+
+            alert("Form fields not found.");
+
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = "Send Message";
+            }
+
+            return;
+        }
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!name || !email) {
+
+            alert("Name and Email are required.");
+
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = "Send Message";
+            }
+
+            return;
+        }
+
+        try {
+
+            document.getElementById("pageLoader").style.display = "flex";
+
+            await addDoc(collection(db, "leads"), {
+                name,
+                email,
+                phone,
+                message,
+                createdAt: serverTimestamp()
+            });
+
+            document.getElementById("pageLoader").style.display = "none";
+
+            alert("Message Sent Successfully ✅");
+
+            nameInput.value = "";
+            emailInput.value = "";
+            phoneInput.value = "";
+            messageInput.value = "";
+
+        } catch (error) {
+
+            document.getElementById("pageLoader").style.display = "none";
+
+            console.error("Firestore Error:", error);
+
+            alert("Error Saving Data ❌");
+
+        } finally {
+
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = "Send Message";
+            }
+
+        }
+    };
+
+    /* HERO TYPING ANIMATION */
+
+    const services = [
+        "Video Editing",
+        "Social Media Handling",
+        "Graphic Designing",
+        "E-Commerce Websites",
+        "Portfolio Websites",
+        "Real Estate Websites",
+        "Business Websites",
+        "Landing Pages"
+    ];
+
+    let serviceIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const typing = document.getElementById("typing");
+
+    function animateText() {
+
+        if (!typing) return;
+
+        const current = services[serviceIndex];
+
+        if (!deleting) {
+
+            typing.textContent =
+                current.substring(0, charIndex + 1);
+
+            charIndex++;
+
+            if (charIndex === current.length) {
+
+                deleting = true;
+
+                setTimeout(animateText, 1500);
+
+                return;
+            }
+
+        } else {
+
+            typing.textContent =
+                current.substring(0, charIndex - 1);
+
+            charIndex--;
+
+            if (charIndex === 0) {
+
+                deleting = false;
+
+                serviceIndex =
+                    (serviceIndex + 1) % services.length;
+            }
+        }
+
+        setTimeout(
+            animateText,
+            deleting ? 50 : 100
+        );
+    }
+
+    animateText();
+
+</script>
+
+</html>
